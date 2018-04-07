@@ -40,17 +40,9 @@
 </head>
 <body class="demo-2 loading">
 <svg class="hidden">
-    <symbol id="icon-arrow" viewBox="0 0 24 24">
-        <title>arrow</title>
-        <polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 "/>
-    </symbol>
     <symbol id="icon-drop" viewBox="0 0 24 24">
         <title>drop</title>
         <path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z"/><path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z"/>
-    </symbol>
-    <symbol id="shape-demo" viewBox="0 0 200 100">
-        <title>shape demo</title>
-        <path d="M 6.144,74.1 C 20.4,107.4 70.13,94.33 94.22,95.74 121.3,97.41 130.8,101.1 154.7,99.38 178.6,97.72 201.9,78.95 199.4,46.86 197.1,14.96 174.9,4.781 161.4,1.827 147.9,-1.128 119.8,8.284 105.6,8.766 85.34,9.449 81.91,7.628 51.08,2.334 17.26,-3.482 -8.105,40.84 6.144,74.1 Z" />
     </symbol>
 </svg>
 <main>
@@ -62,101 +54,33 @@
     <div class="content content--fixed">
         <header class="codrops-header">
             <div class="codrops-links">
-                <svg class="decoshape" viewBox="0 0 200 100" width="100%" height="100%" preserveAspectRatio="none">
-                    <path d="M 10.45,74.41 C 39.4,110.8 72.59,67.27 95.98,68.68 122.3,70.35 131.5,101.4 154.7,99.69 177.9,98.03 200.5,79.26 198.1,47.17 195.9,15.27 174.6,-0.3279 151.8,0.9941 128.6,2.581 126,16.86 107,22.76 88.26,28.67 88.87,12.36 60.37,1.787 31.79,-8.877 -18.61,37.92 10.45,74.41 Z" />
-                </svg>
-                <a class="codrops-icon codrops-icon--prev" href="https://tympanus.net/Development/FolderPreviewIdeas/" title="Previous Demo"><svg class="icon icon--arrow"><use xlink:href="#icon-arrow"></use></svg></a>
-                <a class="codrops-icon codrops-icon--drop" href="https://tympanus.net/codrops/?p=31190" title="Back to the article"><svg class="icon icon--drop"><use xlink:href="#icon-drop"></use></svg></a>
+                <a class="codrops-icon codrops-icon--drop" href="https://tympanus.net/codrops/?p=31190" th:title="#{index.aboutus.title}"><svg class="icon icon--drop"><use xlink:href="#icon-drop"></use></svg></a>
             </div>
-            <h1 class="codrops-header__title">Morphing Background Shapes</h1>
         </header>
         <a class="pater" href="/login">
             <svg class="pater__deco" width="300" height="240" viewBox="0 0 1000 800">
                 <path d="M27.4,171.8C73,42.9,128.6,1,128.6,1s0,0,0,0c58.5,0,368.3,0.3,873.2,0.8c38.5,211,42.1,373.5,38.9,476.7c-2.5,80.3-10.6,174.9-76.7,247.8c-15.1,16.6-37.4,41.2-72.8,53.9c-92.4,33.1-173-50.8-283.9-99.4c-224.3-98.4-334.9,51.4-472.2-45.6C-6.3,535.2-14.5,290.6,27.4,171.8z"/>
             </svg>
-            <h4 class="pater__title">Wanna Try?</h4>
-            <p class="pater__desc">Click here to login or signup.</p>
+            <h4 class="pater__title" th:text="#{index.loginPopup.title}" />
+            <p class="pater__desc" th:text="#{index.loginPopup.content}"  />
         </a>
-        <div class="deco deco--title">2018 ART PRODUCTIONS</div>
+        <div class="deco deco--title" th:text="#{index.companySignature}"/>
     </div>
     <div class="content-wrap">
         <div class="content content--layout content--layout-1">
             <img class="content__img" th:src="@{/images/3.jpg}" alt="Some image" />
-            <h3 class="content__title">instabook</h3>
-            <p class="content__author">Ankur Upadhyay</p>
-            <p class="content__desc">Lost or found? That's the question today.</p>
-            <a href="#" class="content__link">Discover</a>
+            <h3 class="content__title" th:text="#{index.projectName}"/>
+            <p class="content__author" th:text="#{index.projectCreator}" style="color: white" />
+            <p class="content__desc" th:text="#{index.projectDescription}" style="color: lightgray" />
+            <div href="#" class="content__link" th:text="#{index.projectMotive}" style="color: lightgray" />
         </div>
     </div>
     <!-- Related demos -->
     <section class="content content--related">
-        <!--<div class="limiter">
-            <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
-                <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-                    <form class="login100-form validate-form flex-sb flex-w">
-					<span class="login100-form-title p-b-53">
-						Sign In With
-					</span>
-
-                        <a href="#" class="btn-face m-b-20">
-                            <img th:src="@{/images/icon-facebook.png}" width="40px" alt="facebook">
-                            Facebook
-                        </a>
-
-                        <a href="#" class="btn-google m-b-20">
-                            <img th:src="@{/images/icon-google.png}" alt="google">
-                            Google
-                        </a>
-
-                        <div class="p-t-31 p-b-9">
-						<span class="txt1">
-							Username
-						</span>
-                        </div>
-                        <div class="wrap-input100 validate-input" data-validate = "Username is required">
-                            <input class="input100" type="text" name="username" >
-                            <span class="focus-input100"></span>
-                        </div>
-
-                        <div class="p-t-13 p-b-9">
-						<span class="txt1">
-							Password
-						</span>
-
-                            <a href="#" class="txt2 bo1 m-l-5">
-                                Forgot?
-                            </a>
-                        </div>
-                        <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                            <input class="input100" type="password" name="pass" >
-                            <span class="focus-input100"></span>
-                        </div>
-
-                        <div class="container-login100-form-btn m-t-17">
-                            <button class="login100-form-btn">
-                                Sign In
-                            </button>
-                        </div>
-
-                        <div class="w-full text-center p-t-55">
-						<span class="txt2">
-							Not a member?
-						</span>
-
-                            <a href="#" class="txt2 bo1">
-                                Sign up now
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>-->
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33" style="padding: 30px 30px 30px 0; width:auto">
-                    <span class="login100-form-title p-b-53" style="padding-bottom: 40px">
-						Recent Posts
-					</span>
+                    <span class="login100-form-title p-b-53" th:text="#{index.recentPostsTitle}" style="padding-bottom: 40px" />
                     <div class="row" style="display: block; color: black; max-width:1200px; min-width: 200px">
                         <div style="min-width:200px; width: 20%; float:left">
                             <img style="width: 150px; height:150px" class="content__img" th:src="@{/images/3.jpg}" alt="Some image"/>
