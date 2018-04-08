@@ -11,9 +11,9 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/login")
-    public String login() {
-        return "login";
+    @RequestMapping("/loggedIn")
+    public String loggedIn() {
+        return "loggedInTemp";
     }
 
     @RequestMapping("/signup")

@@ -23,7 +23,6 @@
     <link th:href="@{/css/daterangepicker.css}" rel="stylesheet"/>
     <link th:href="@{/css/loginutil.css}" rel="stylesheet"/>
     <link th:href="@{/css/loginmain.css}" rel="stylesheet"/>
-    <link th:href="@{/css/notify/toastr.min.css}" rel="stylesheet"/>
     <script>
         document.documentElement.className = 'js';
         var supportsCssVars = function () {
@@ -64,83 +63,37 @@
                 </a>
             </div>
         </header>
+        <a class="pater" href="/login">
+            <svg class="pater__deco" width="300" height="240" viewBox="0 0 1000 800">
+                <path d="M27.4,171.8C73,42.9,128.6,1,128.6,1s0,0,0,0c58.5,0,368.3,0.3,873.2,0.8c38.5,211,42.1,373.5,38.9,476.7c-2.5,80.3-10.6,174.9-76.7,247.8c-15.1,16.6-37.4,41.2-72.8,53.9c-92.4,33.1-173-50.8-283.9-99.4c-224.3-98.4-334.9,51.4-472.2-45.6C-6.3,535.2-14.5,290.6,27.4,171.8z"/>
+            </svg>
+            <h4 class="pater__title" th:text="#{index.loginPopup.title}"/>
+            <p class="pater__desc" th:text="#{index.loginPopup.content}"/>
+        </a>
         <div class="deco deco--title" th:text="#{index.companySignature}"/>
     </div>
-    <!-- Related demos -->
-    <section class="content content--related">
-        <div class="limiter">
-            <div class="container-login100">
-                <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33" style="padding-top: 40px;">
-                    <form id="loginForm" class="login100-form validate-form flex-sb flex-w" th:action="@{/login}" method="post">
-                        <span class="login100-form-title p-b-53" style="padding-bottom: 30px;"
-                              th:text="#{login.signInTitle}"/>
-                        <a href="#" class="btn-face m-b-20" style="margin-bottom: 0; height:50px">
-                            <img th:src="@{/images/icon-facebook.png}" width="40px" alt="facebook"
-                                 th:text="#{login.facebook}">
-                        </a>
-                        <a href="#" class="btn-google m-b-20" style="margin-bottom: 0; height:50px">
-                            <img th:src="@{/images/icon-google.png}" alt="google" th:text="#{login.google}">
-                        </a>
-                        <div style="text-align: center; width: 100%; padding-top: 20px">
-                            <span class="txt1" th:text="#{login.signInOption}"/>
-                        </div>
-                        <div class="p-t-31 p-b-9">
-                            <span class="txt1" th:text="#{login.username}"/>
-                        </div>
-                        <div class="wrap-input100 validate-input" data-validate="Username is required">
-                            <input class="input100" type="text" id="username" name="username" style="height:50px">
-                            <span class="focus-input100"></span>
-                        </div>
-                        <div class="p-t-13 p-b-9" style="margin-top: 18px">
-                            <span class="txt1" th:text="#{login.password}"/>
-
-                            <a href="#" class="txt2 bo1 m-l-5" th:text="#{login.forgot}"/>
-                        </div>
-                        <div class="wrap-input100 validate-input" data-validate="Password is required">
-                            <input class="input100" type="password" id="password" name="password" style="height:50px">
-                            <span class="focus-input100"></span>
-                        </div>
-                        <div class="container-login100-form-btn m-t-17" style="height:50px; margin-top: 30px;">
-                            <button class="login100-form-btn" th:text="#{login.signInBtn}" type="submit"/>
-                        </div>
-                        <div class="w-full text-center p-t-55" style="padding-top: 30px">
-                            <span class="txt2" th:text="#{login.signUpDescription}"/>
-                            <a href="/signup" class="txt2 bo1" th:text="#{login.signUpReference}"/>
-                        </div>
-                    </form>
-                </div>
+    <div class="content-wrap">
+        <div class="content content--layout content--layout-1">
+<!--            <img class="content__img" th:src="@{/images/3.jpg}" alt="Some image"/>
+            <h3 class="content__title" >You are logged in</h3>
+            <p class="content__author" th:text="#{index.projectCreator}" style="color: white"/>
+            <p class="content__desc" th:text="#{index.projectDescription}" style="color: lightgray"/>
+            <div href="#" class="content__link" th:text="#{index.projectMotive}" style="color: lightgray"/>-->
+            <div th:if="${#authorization.expression('isAuthenticated()')}">
+                <form id="f" th:action="@{/logout}" method="post" role="form" class="navbar-form">
+                    <button type="submit" th:text="#{navbar.logout.text}" class="btn btn-primary" />
+                </form>
             </div>
         </div>
+    </div>
+    <section class="content--related" style="display:none;">
     </section>
 </main>
-<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
-<script th:src="@{/js/notify/toastr.min.js}"></script>
-<div th:if="${param.error}">
-    <script>
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": true,
-            "progressBar": false,
-            "positionClass": "toast-top-center",
-            "preventDuplicates": true,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
-        toastr["error"]("An error occurred while logging in");
-    </script>
-</div>
 <script th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
 <script th:src="@{/js/anime.min.js}"></script>
 <script th:src="@{/js/scrollMonitor.js}"></script>
 <script th:src="@{/js/demo2.js}"></script>
+<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
 <script th:src="@{/js/animsition.min.js}"></script>
 <script th:src="@{/js/popper.js}"></script>
 <script th:src="@{/js/select2.min.js}"></script>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Morphing Background Shapes | Demo 2 | Codrops</title>
-    <meta name="description" content="A page background effect where SVG shapes morph and transform on scroll" />
-    <meta name="keywords" content="background, svg, morph, animation, scroll, shape, web development, css, javascript" />
-    <meta name="author" content="Codrops" />
+    <meta name="description" content="A page background effect where SVG shapes morph and transform on scroll"/>
+    <meta name="keywords" content="background, svg, morph, animation, scroll, shape, web development, css, javascript"/>
+    <meta name="author" content="Codrops"/>
     <link rel="shortcut icon" href="favicon.ico">
     <!--<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">-->
     <link th:href="@{/css/normalize.css}" rel="stylesheet"/>
@@ -25,7 +25,7 @@
     <link th:href="@{/css/loginmain.css}" rel="stylesheet"/>
     <script>
         document.documentElement.className = 'js';
-        var supportsCssVars = function() {
+        var supportsCssVars = function () {
             var s = document.createElement('style'),
                 support;
 
@@ -42,7 +42,8 @@
 <svg class="hidden">
     <symbol id="icon-drop" viewBox="0 0 24 24">
         <title>drop</title>
-        <path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z"/><path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z"/>
+        <path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z"/>
+        <path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z"/>
     </symbol>
 </svg>
 <main>
@@ -54,25 +55,30 @@
     <div class="content content--fixed">
         <header class="codrops-header">
             <div class="codrops-links">
-                <a class="codrops-icon codrops-icon--drop" href="https://tympanus.net/codrops/?p=31190" th:title="#{index.aboutus.title}"><svg class="icon icon--drop"><use xlink:href="#icon-drop"></use></svg></a>
+                <a class="codrops-icon codrops-icon--drop" href="https://tympanus.net/codrops/?p=31190"
+                   th:title="#{index.aboutus.title}">
+                    <svg class="icon icon--drop">
+                        <use xlink:href="#icon-drop"></use>
+                    </svg>
+                </a>
             </div>
         </header>
         <a class="pater" href="/login">
             <svg class="pater__deco" width="300" height="240" viewBox="0 0 1000 800">
                 <path d="M27.4,171.8C73,42.9,128.6,1,128.6,1s0,0,0,0c58.5,0,368.3,0.3,873.2,0.8c38.5,211,42.1,373.5,38.9,476.7c-2.5,80.3-10.6,174.9-76.7,247.8c-15.1,16.6-37.4,41.2-72.8,53.9c-92.4,33.1-173-50.8-283.9-99.4c-224.3-98.4-334.9,51.4-472.2-45.6C-6.3,535.2-14.5,290.6,27.4,171.8z"/>
             </svg>
-            <h4 class="pater__title" th:text="#{index.loginPopup.title}" />
-            <p class="pater__desc" th:text="#{index.loginPopup.content}"  />
+            <h4 class="pater__title" th:text="#{index.loginPopup.title}"/>
+            <p class="pater__desc" th:text="#{index.loginPopup.content}"/>
         </a>
         <div class="deco deco--title" th:text="#{index.companySignature}"/>
     </div>
     <div class="content-wrap">
         <div class="content content--layout content--layout-1">
-            <img class="content__img" th:src="@{/images/3.jpg}" alt="Some image" />
+            <img class="content__img" th:src="@{/images/3.jpg}" alt="Some image"/>
             <h3 class="content__title" th:text="#{index.projectName}"/>
-            <p class="content__author" th:text="#{index.projectCreator}" style="color: white" />
-            <p class="content__desc" th:text="#{index.projectDescription}" style="color: lightgray" />
-            <div href="#" class="content__link" th:text="#{index.projectMotive}" style="color: lightgray" />
+            <p class="content__author" th:text="#{index.projectCreator}" style="color: white"/>
+            <p class="content__desc" th:text="#{index.projectDescription}" style="color: lightgray"/>
+            <div href="#" class="content__link" th:text="#{index.projectMotive}" style="color: lightgray"/>
         </div>
     </div>
     <!-- Related demos -->
@@ -80,10 +86,12 @@
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33" style="padding: 30px 30px 30px 0; width:auto">
-                    <span class="login100-form-title p-b-53" th:text="#{index.recentPostsTitle}" style="padding-bottom: 40px" />
+                    <span class="login100-form-title p-b-53" th:text="#{index.recentPostsTitle}"
+                          style="padding-bottom: 40px"/>
                     <div class="row" style="display: block; color: black; max-width:1200px; min-width: 200px">
                         <div style="min-width:200px; width: 20%; float:left">
-                            <img style="width: 150px; height:150px" class="content__img" th:src="@{/images/3.jpg}" alt="Some image"/>
+                            <img style="width: 150px; height:150px" class="content__img" th:src="@{/images/3.jpg}"
+                                 alt="Some image"/>
                         </div>
 
                         <div style="min-width:200px; width: 80%; float:right">
@@ -97,7 +105,15 @@
                                 </div>
                             </div>
                             <div style="text-align: justify">
-                                The English Wikipedia is the English-language edition of the free online encyclopedia Wikipedia. Founded on January 15, 2001, it is the first edition of Wikipedia and, as of November 2017, has the most articles of any of the editions.[2] As of April 2018, 12% of articles in all Wikipedias belong to the English-language edition. This share has gradually declined from more than 50 percent in 2003, due to the growth of Wikipedias in other languages.[3] There are 5,607,078 articles on the site (live count).[4] In October 2015, the combined text of the English Wikipedia's articles totalled 11.5 gigabytes when compressed.[5] On 1 November 2015, the English Wikipedia announced it had reached 5,000,000 articles[6] and ran a special logo to reflect the milestone.[7]
+                                The English Wikipedia is the English-language edition of the free online encyclopedia
+                                Wikipedia. Founded on January 15, 2001, it is the first edition of Wikipedia and, as of
+                                November 2017, has the most articles of any of the editions.[2] As of April 2018, 12% of
+                                articles in all Wikipedias belong to the English-language edition. This share has
+                                gradually declined from more than 50 percent in 2003, due to the growth of Wikipedias in
+                                other languages.[3] There are 5,607,078 articles on the site (live count).[4] In October
+                                2015, the combined text of the English Wikipedia's articles totalled 11.5 gigabytes when
+                                compressed.[5] On 1 November 2015, the English Wikipedia announced it had reached
+                                5,000,000 articles[6] and ran a special logo to reflect the milestone.[7]
                             </div>
                         </div>
                     </div>
