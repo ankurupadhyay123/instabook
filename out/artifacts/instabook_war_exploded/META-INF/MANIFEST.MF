@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: instabook
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: ankur
+Implementation-Vendor-Id: com.instabook
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_162
+Main-Class: ${start-class}
+

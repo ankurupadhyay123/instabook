@@ -13,7 +13,7 @@ public class IndexController {
 
     @RequestMapping("/loggedIn")
     public String loggedIn() {
-        return "loggedInTemp";
+        return "dashboard";
     }
 
     @RequestMapping("/signup")

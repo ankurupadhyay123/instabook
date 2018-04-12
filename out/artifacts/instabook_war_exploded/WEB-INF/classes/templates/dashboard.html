@@ -8,21 +8,13 @@
     <meta name="keywords" content="background, svg, morph, animation, scroll, shape, web development, css, javascript"/>
     <meta name="author" content="Codrops"/>
     <link rel="shortcut icon" href="favicon.ico">
+    <link th:href="@{/css/navbar/component.css}" rel="stylesheet"/>
+    <link th:href="@{/css/navbar/demo.css}" rel="stylesheet"/>
+    <link th:href="@{/css/navbar/normailze.css}" rel="stylesheet"/>
     <!--<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">-->
     <link th:href="@{/css/normalize.css}" rel="stylesheet"/>
     <link th:href="@{/css/demo.css}" rel="stylesheet"/>
     <link th:href="@{/css/pater.css}" rel="stylesheet"/>
-    <link th:href="@{/css/main.css}" rel="stylesheet"/>
-    <link th:href="@{/css/util.css}" rel="stylesheet"/>
-    <!--<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>-->
-    <!--<link th:href="@{/css/icon-font.min.css}" rel="stylesheet"/>-->
-    <link th:href="@{/css/animate.css}" rel="stylesheet"/>
-    <link th:href="@{/css/hamburgers.min.css}" rel="stylesheet"/>
-    <link th:href="@{/css/animsition.min.css}" rel="stylesheet"/>
-    <link th:href="@{/css/select2.min.css}" rel="stylesheet"/>
-    <link th:href="@{/css/daterangepicker.css}" rel="stylesheet"/>
-    <link th:href="@{/css/loginutil.css}" rel="stylesheet"/>
-    <link th:href="@{/css/loginmain.css}" rel="stylesheet"/>
     <script>
         document.documentElement.className = 'js';
         var supportsCssVars = function () {
@@ -63,43 +55,70 @@
                 </a>
             </div>
         </header>
-        <a class="pater" href="/login">
-            <svg class="pater__deco" width="300" height="240" viewBox="0 0 1000 800">
-                <path d="M27.4,171.8C73,42.9,128.6,1,128.6,1s0,0,0,0c58.5,0,368.3,0.3,873.2,0.8c38.5,211,42.1,373.5,38.9,476.7c-2.5,80.3-10.6,174.9-76.7,247.8c-15.1,16.6-37.4,41.2-72.8,53.9c-92.4,33.1-173-50.8-283.9-99.4c-224.3-98.4-334.9,51.4-472.2-45.6C-6.3,535.2-14.5,290.6,27.4,171.8z"/>
-            </svg>
-            <h4 class="pater__title" th:text="#{index.loginPopup.title}"/>
-            <p class="pater__desc" th:text="#{index.loginPopup.content}"/>
-        </a>
-        <div class="deco deco--title" th:text="#{index.companySignature}"/>
     </div>
     <div class="content-wrap">
-        <div class="content content--layout content--layout-1">
-<!--            <img class="content__img" th:src="@{/images/3.jpg}" alt="Some image"/>
-            <h3 class="content__title" >You are logged in</h3>
-            <p class="content__author" th:text="#{index.projectCreator}" style="color: white"/>
-            <p class="content__desc" th:text="#{index.projectDescription}" style="color: lightgray"/>
-            <div href="#" class="content__link" th:text="#{index.projectMotive}" style="color: lightgray"/>-->
-            <div th:if="${#authorization.expression('isAuthenticated()')}">
-                <form id="f" th:action="@{/logout}" method="post" role="form" class="navbar-form">
-                    <button type="submit" th:text="#{navbar.logout.text}" class="btn btn-primary" />
-                </form>
-            </div>
+        <div class="content content--layout content--layout-1" style="width:100%; height:100%">
+            <nav class="menu menu--sebastian">
+                <ul class="menu__list">
+                    <li class="menu__item menu__item--current"><a href="#" class="menu__link">Home</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Shop</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">News</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Support</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div th:if="${#authorization.expression('isAuthenticated()')}">
+            <form id="f" th:action="@{/logout}" method="post" role="form" class="navbar-form">
+                <button type="submit" th:text="#{navbar.logout.text}" class="btn btn-primary" />
+            </form>
         </div>
     </div>
     <section class="content--related" style="display:none;">
     </section>
 </main>
+<script th:src="@{/js/navbar/classie.js}"></script>
+<script th:src="@{/js/navbar/clipboard.min.js}"></script>
+<script>
+    (function() {
+        [].slice.call(document.querySelectorAll('.menu')).forEach(function(menu) {
+            var menuItems = menu.querySelectorAll('.menu__link'),
+                setCurrent = function(ev) {
+                    ev.preventDefault();
+
+                    var item = ev.target.parentNode; // li
+
+                    // return if already current
+                    if (classie.has(item, 'menu__item--current')) {
+                        return false;
+                    }
+                    // remove current
+                    classie.remove(menu.querySelector('.menu__item--current'), 'menu__item--current');
+                    // set current
+                    classie.add(item, 'menu__item--current');
+                };
+
+            [].slice.call(menuItems).forEach(function(el) {
+                el.addEventListener('click', setCurrent);
+            });
+        });
+
+        [].slice.call(document.querySelectorAll('.link-copy')).forEach(function(link) {
+            link.setAttribute('data-clipboard-text', location.protocol + '//' + location.host + location.pathname + '#' + link.parentNode.id);
+            new Clipboard(link);
+            link.addEventListener('click', function() {
+                classie.add(link, 'link-copy--animate');
+                setTimeout(function() {
+                    classie.remove(link, 'link-copy--animate');
+                }, 300);
+            });
+        });
+    })(window);
+</script>
 <script th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
 <script th:src="@{/js/anime.min.js}"></script>
 <script th:src="@{/js/scrollMonitor.js}"></script>
 <script th:src="@{/js/demo2.js}"></script>
 <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
-<script th:src="@{/js/animsition.min.js}"></script>
-<script th:src="@{/js/popper.js}"></script>
-<script th:src="@{/js/select2.min.js}"></script>
-<script th:src="@{/js/moment.min.js}"></script>
-<script th:src="@{/js/daterangepicker.js}"></script>
-<script th:src="@{/js/countdowntime.js}"></script>
-<script th:src="@{/js/main.js}"></script>
 </body>
 </html>
